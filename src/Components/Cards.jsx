@@ -53,116 +53,112 @@ const Cards = ({ todo, setTodo, deleteTodo, filter }) => {
   };
 
   return (
-    <div>
-      <div className="container container-card">
-        <h3>My Todos</h3>
-        <div className="row row-cols-3 g-3">
-          {filteredTodo.map((element, index) => {
-            return (
-              <div key={index}>
-                <div className="col">
-                  <div className="card h-100">
-                    <div className="card-body">
-                      {editId === index ? (
-                        <form onSubmit={handleSubmitEdit}>
-                          <div className="row">
-                            <div className="col-md-6">
-                              <label className="form-label">Title</label>
-                              <input
-                                type="text"
-                                value={editTitle}
-                                onChange={(e) => setEditTitle(e.target.value)}
-                                className="form-control"
-                              />
-                            </div>
-                            <div className="col-md-6">
-                              <label className="form-label">Description</label>
-                              <input
-                                type="text"
-                                value={editDescription}
-                                onChange={(e) =>
-                                  setEditDescription(e.target.value)
-                                }
-                                className="form-control"
-                              />
-                            </div>
-                            <div className="col-md-8">
-                              <label className="form-lable">Status :</label>
-                              <select
-                                className="form-select"
-                                value={editStatus}
-                                onChange={(e) => setEditStatus(e.target.value)}
-                              >
-                                <option value="not_completed">
-                                  Not Completed
-                                </option>
-                                <option value="completed">Completed</option>
-                              </select>
-                            </div>
+    <div className="container container-card">
+      <h3>My Todos</h3>
+      <div className="row row-cols-1 row-cols-md-3  g-3">
+        {filteredTodo.map((element, index) => {
+          return (
+            <div key={index}>
+              <div className="col">
+                <div className="card h-100">
+                  <div className="card-body">
+                    {editId === index ? (
+                      <form onSubmit={handleSubmitEdit}>
+                        <div className="row">
+                          <div className="col-md-6">
+                            <label className="form-label">Title</label>
+                            <input
+                              type="text"
+                              value={editTitle}
+                              onChange={(e) => setEditTitle(e.target.value)}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6">
+                            <label className="form-label">Description</label>
+                            <input
+                              type="text"
+                              value={editDescription}
+                              onChange={(e) =>
+                                setEditDescription(e.target.value)
+                              }
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-8">
+                            <label className="form-lable">Status :</label>
+                            <select
+                              className="form-select"
+                              value={editStatus}
+                              onChange={(e) => setEditStatus(e.target.value)}
+                            >
+                              <option value="not_completed">
+                                Not Completed
+                              </option>
+                              <option value="completed">Completed</option>
+                            </select>
+                          </div>
 
-                            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                              <button
-                                type="submit"
-                                className="btn btn-outline-info btn-sm"
-                              >
-                                Update
-                              </button>
-                            </div>
+                          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button
+                              type="submit"
+                              className="btn btn-outline-info btn-sm"
+                            >
+                              Update
+                            </button>
                           </div>
-                        </form>
-                      ) : (
-                        <>
-                          <div className="card-text">
-                            Title : {element.title}
-                          </div>
-                          <div className="card-text">
-                            Description : {element.description}
-                          </div>
-                          <label className="form-lable">Status :</label>
-                          <select
-                            className="form-select"
-                            value={element.status}
-                            onChange={(event) =>
-                              handleStatusChange(index, event.target.value)
-                            }
-                          >
-                            <option value="not_completed">Not Completed</option>
-                            <option value="completed">Completed</option>
-                          </select>
-                        </>
-                      )}
-                    </div>
-                    <div className="card-footer">
-                      <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button
-                          type="button"
-                          className="btn btn-outline-warning btn-sm "
-                          onClick={() =>
-                            handleEdit(
-                              index,
-                              element.title,
-                              element.description,
-                              element.status
-                            )
+                        </div>
+                      </form>
+                    ) : (
+                      <>
+                        <div className="card-text">Title : {element.title}</div>
+                        <div className="card-text">
+                          Description : {element.description}
+                        </div>
+                        <label className="form-lable">Status :</label>
+                        <select
+                          className="form-select"
+                          value={element.status}
+                          onChange={(event) =>
+                            handleStatusChange(index, event.target.value)
                           }
                         >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-outline-danger btn-sm"
-                          onClick={() => handleDelete(index)}
-                        >
-                          Delete
-                        </button>
-                      </div>
+                          <option value="not_completed">Not Completed</option>
+                          <option value="completed">Completed</option>
+                        </select>
+                      </>
+                    )}
+                  </div>
+                  <div className="card-footer">
+                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                      <button
+                        type="button"
+                        className="btn btn-outline-warning btn-sm "
+                        onClick={() =>
+                          handleEdit(
+                            index,
+                            element.title,
+                            element.description,
+                            element.status
+                          )
+                        }
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-outline-danger btn-sm"
+                        onClick={() => handleDelete(index)}
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

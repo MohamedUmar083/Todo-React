@@ -21,7 +21,7 @@ const App = () => {
   };
 
   return (
-    <div className="container container-head">
+    <div>
       <Input newTodo={newTodo} />
       <div className="container container-status">
         <label className="form-lable">Status Filter</label>&nbsp;
